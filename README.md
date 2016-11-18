@@ -3,9 +3,9 @@ Running scripts from lein:
 
 Running the scripts from within fireplace:
 
-# ```lein repl```
-# In vim:
-  # ```:Connect```
-  # ```cpp``` execute immediately
-  # ```cqq``` take to a command line and execute
-  # ```:help fireplace```
+1. ```lein repl```
+2. In vim:
+  a. ```:Connect```
+  b. ```cpp``` execute immediately
+  c. ```cqq``` take to a command line and execute
+  d. ```:help fireplace```
