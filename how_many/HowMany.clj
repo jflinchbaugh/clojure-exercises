@@ -1,3 +1,8 @@
+(comment
+    clojure toys to solve the "how many" problem from
+    https://github.com/trescube/HowMany_java
+)
+
 (use '[clojure.test :as t])
 
 (ns howmany)
