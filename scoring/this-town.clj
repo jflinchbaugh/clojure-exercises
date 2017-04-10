@@ -1,15 +1,22 @@
 (comment
-    scoring for the game.
+    I always have trouble explaining the scoring,
+    so this should make it easier.
+
+    Everyone gets the count
+
     https://boardgamegeekstore.com/products/tmg-micro-game-this-town-aint-big-enough
 )
-(def scores {:red 12, :blue 3, :yellow 1})
 
 (defn sort-map [scores] (reverse (sort-by val scores)))
 
-(defn score [scores]
-    (let [ordered (sort-map scores)]
-        (zipmap (keys ordered) (rest (vals ordered)))
+(defn score [counts]
+    (let [ordered (sort-map counts)]
+        ; each player gets the next count that's less their own
+        (zipmap
+            (keys ordered)
+            (distinct (rest (vals ordered)))
+        )
     )
 )
 
-(score scores)
+(score {:red 12, :blue 1, :yellow 1, :green 4})
