@@ -32,6 +32,12 @@
             {:red 4, :green 1}
         )
     )
+    (is
+        (=
+            (score {:red 12, :orange, 12, :blue 1, :yellow 1, :green 4})
+            {:red 4, :orange, 4, :green 1}
+        )
+    )
 )
 
 (t/run-tests)
