@@ -1,6 +1,6 @@
 (comment
     I always have trouble explaining the scoring,
-    so this should make it easier.
+    so this should make it easier. ;)
 
     Everyone gets the count
 
@@ -10,32 +10,58 @@
 (use '[clojure.test :as t])
 (ns this-town)
 
-(defn sort-map [scores] (reverse (sort-by val scores)))
+(defn map-scores
+    "given a list of counts,  produce a map of scores for each count"
+    [counts]
+    (let
+        [
+            ordered (reverse (sort (distinct counts)))
+            next-scores (conj (vec (rest ordered)) 0)
+        ]
+        (zipmap ordered next-scores)
+    )
+)
+
+(map-scores [1  2 2 3 4])
 
 (defn score
+    "given a map of counts, return a map of the scores"
     [counts]
-    (let [ordered (sort-map counts)]
+    (let
+        [
+            score-map (map-scores (vals counts))
+            players (keys counts)
+        ]
         ; each player gets the next count that's less their own
         (zipmap
-            (keys ordered)
-            (distinct (rest (vals ordered)))
+            players
+            (map score-map (vals counts))
         )
     )
 )
 
 (score {:red 12, :blue 1, :yellow 1, :green 4})
 
+(t/deftest map-scores-tests
+    (is
+        (=
+            (map-scores [1 2 3 3 4])
+            {4 3, 3 2, 2 1, 1 0}
+        )
+    )
+)
+
 (t/deftest score-tests
     (is
         (=
             (score {:red 12, :blue 1, :yellow 1, :green 4})
-            {:red 4, :green 1}
+            {:red 4, :green 1, :blue 0, :yellow 0}
         )
     )
     (is
         (=
             (score {:red 12, :orange, 12, :blue 1, :yellow 1, :green 4})
-            {:red 4, :orange, 4, :green 1}
+            {:red 4, :orange, 4, :green 1, :blue 0, :yellow 0}
         )
     )
 )
