@@ -2,8 +2,6 @@
     I always have trouble explaining the scoring,
     so this should make it easier. ;)
 
-    Everyone gets the count
-
     https://boardgamegeekstore.com/products/tmg-micro-game-this-town-aint-big-enough
 )
 
