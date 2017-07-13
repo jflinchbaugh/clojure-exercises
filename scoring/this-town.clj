@@ -13,8 +13,8 @@
     [counts]
     (let
         [
-            ordered (reverse (sort (distinct counts)))
-            next-scores (conj (vec (rest ordered)) 0)
+            ordered (-> counts distinct sort reverse)
+            next-scores (conj (-> ordered rest vec) 0)
         ]
         (zipmap ordered next-scores)
     )
