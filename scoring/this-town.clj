@@ -20,7 +20,7 @@
     )
 )
 
-(map-scores [1  2 2 3 4])
+(map-scores [1 2 2 3 4])
 
 (defn score
     "given a map of counts, return a map of the scores"
