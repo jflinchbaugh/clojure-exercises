@@ -59,7 +59,8 @@
   ) podcast-db
 )
 
-(comment make a more generic accessor)
+(comment make a more generic accessor -- incomplete)
+
 (defn get-element [xml-root path]
   (apply zip-xml/xml->
     xml-root
