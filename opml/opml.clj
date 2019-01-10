@@ -25,6 +25,16 @@
 
 (pprint root)
 
+(def outline
+  (zip-xml/xml->
+    root
+    :body
+    :outline
+    zip/node
+    (zip-xml/attr= :text "Listen 1")
+  )
+)
+
 (def feeds
   (zip-xml/xml->
     root
